@@ -1,0 +1,40 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build / Coverage / Cache
+dist/
+build/
+coverage/
+.cache/
+.next/
+out/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Uploads and Generated PDFs
+uploads/
+*.pdf
+
+# Environment files
+.env
+
+# Optional: if you're using editor-specific config
+.vscode/
+.idea/
+*.swp
+
+# Font files (if large and can be re-downloaded)
+fonts/
