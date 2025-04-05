@@ -2,7 +2,7 @@
   "name": "aadhar_generator",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "generate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel-build": "echo 'No build needed'"
