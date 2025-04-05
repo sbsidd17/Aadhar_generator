@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aadhar Card Generator</title>
+  </head>
+  <body>
+    <h1>Aadhar Card Generator</h1>
+    <form id="reportCardForm" enctype="multipart/form-data">
+      <label for="english_name">Name:</label>
+      <input
+        type="text"
+        id="english_name"
+        name="english_name"
+        required
+      /><br /><br />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required /><br /><br />
+
+      <label for="aadharNumber">Aadhar Number:</label>
+      <input
+        type="text"
+        name="aadharNumber"
+        maxlength="16"
+        required
+        placeholder="Enter 16-digit Aadhaar number"
+      /><br /><br />
+
+      <label for="fatherName">Father's Name:</label>
+      <input
+        type="text"
+        id="fatherName"
+        name="fatherName"
+        required
+      /><br /><br />
+
+      <label for="photo">Photo:</label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        accept="image/*"
+        required
+      /><br /><br />
+
+      <button type="submit">Generate Report Card</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("reportCardForm")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+
+          const response = await fetch("/generate-report-card", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = "report_card.pdf";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            alert("Report card generated successfull");
+          } else {
+            alert("Error generating report card.");
+          }
+        });
+    </script>
+  </body>
+</html>
