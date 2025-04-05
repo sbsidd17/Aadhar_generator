@@ -1,10 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/generate.js", "use": "@vercel/node" }
+    { "src": "generate.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/generate-report-card", "dest": "/api/generate.js" },
-    { "src": "/(.*)", "dest": "/public/index.html" }
+    { "src": "/generate-report-card", "methods": ["POST"], "dest": "/generate.js" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
